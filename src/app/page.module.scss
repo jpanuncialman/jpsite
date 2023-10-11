@@ -1,0 +1,29 @@
+/*** MAIN CONTAINER ***/
+.main {
+  @apply text-standard text-lg leading-5 max-w-7xl w-full my-0 mx-auto p-5;
+
+  a {
+    text-decoration: none;
+  }
+  ul {
+    list-style-type: none;
+  }
+}
+
+.header-container {
+  @apply /*grid grid-cols-1 lg:grid-cols-2*/ pt-10;
+}
+
+.header {
+  @apply text-4xl lg:text-7xl font-bold my-7;
+}
+
+.styled-x {
+  &::before {
+    transform: translateY(12px) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(8px) rotate(-45deg);
+  }
+}
