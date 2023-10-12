@@ -29,12 +29,16 @@ module.exports = {
       transitionDelay: {
         400: "0.4s",
       },
+      height: {
+        screen75: "75vh",
+      },
     },
     colors: {
       standard: "#221f20",
       black: `#000`,
       blue: `#0303fc`,
       blueRgba: `rgba(3, 3, 252, 0.8)`,
+      blueRgbaHover: `rgba(3, 3, 252, 0.4)`,
       transparent: "transparent",
       current: "currentColor",
       white: "#fff",
@@ -49,6 +53,7 @@ module.exports = {
       // gray: colors.coolGray,
       // slate: colors.blueGray,
     },
+
     transition: {
       duration: "0.4s",
       property: "ease-in-out",

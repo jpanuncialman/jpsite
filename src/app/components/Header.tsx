@@ -1,25 +1,25 @@
-"use client"; // This is a client component 👈🏽
-import React, { useState } from "react";
-import styles from "../page.module.scss";
+'use client' // This is a client component 👈🏽
+import React, { useState } from 'react'
+import styles from '../page.module.scss'
 
 // import Navi from '../Navi/Navi';
 
 const Header = (): JSX.Element => {
-  const [showNavi, setShowNavi] = useState(false);
+  const [showNavi, setShowNavi] = useState(false)
   const handleShowNavi = (show: boolean) => {
-    setShowNavi(show);
-  };
+    setShowNavi(show)
+  }
   return (
     <div className={`relative cursor-pointer h-9 w-12 mt-4`}>
       <NaviHamburger showNavi={showNavi} handleShowNavi={handleShowNavi} />
       {showNavi && <Navi handleShowNavi={handleShowNavi} />}
     </div>
-  );
-};
+  )
+}
 
 interface NaviHamburger {
-  showNavi: boolean;
-  handleShowNavi: (showNavi: boolean) => void;
+  showNavi: boolean
+  handleShowNavi: (showNavi: boolean) => void
 }
 
 const NaviHamburger = ({
@@ -27,51 +27,51 @@ const NaviHamburger = ({
   handleShowNavi,
 }: NaviHamburger): JSX.Element => {
   const getPositionClass = (position: number) => {
-    let classToReturn = "";
+    let classToReturn = ''
     switch (position) {
       case 2:
-        classToReturn = `top-1/2 -translate-y-1/2`;
-        break;
+        classToReturn = `top-1/2 -translate-y-1/2`
+        break
       case 3:
-        classToReturn = `bottom-0`;
-        break;
+        classToReturn = `bottom-0`
+        break
       default:
-        classToReturn = `top-0`;
+        classToReturn = `top-0`
     }
 
-    return classToReturn;
-  };
+    return classToReturn
+  }
 
   const getDelayClass = (d) => {
-    let toReturn = "";
+    let toReturn = ''
     switch (d) {
       case 1:
-        toReturn = "delay-0";
-        break;
+        toReturn = 'delay-0'
+        break
       case 2:
-        toReturn = "delay-150";
-        break;
+        toReturn = 'delay-150'
+        break
       case 3:
-        toReturn = "delay-300";
-        break;
+        toReturn = 'delay-300'
+        break
     }
-    return toReturn;
-  };
+    return toReturn
+  }
   const renderHamburgerBlockLinks = (naviIsShown: any) => {
-    const renderArr = [1, 2, 3];
+    const renderArr = [1, 2, 3]
 
     return renderArr.map((i) => (
       <div
         className={`w-full h-1 absolute bg-standard h-1 ${getPositionClass(
-          i,
+          i
         )} transition-hamburger ${getDelayClass(i)} ${
-          naviIsShown ? "opacity-0" : "opacity-100"
+          naviIsShown ? 'opacity-0' : 'opacity-100'
         }`}
         key={`hamburger-line-${i}`}
         position={i}
       />
-    ));
-  };
+    ))
+  }
   return (
     <div
       className={`max-w-2xl cursor-pointer h-9 w-14 relative mt-5`}
@@ -79,11 +79,11 @@ const NaviHamburger = ({
     >
       {renderHamburgerBlockLinks(showNavi)}
     </div>
-  );
-};
+  )
+}
 
 interface Navi {
-  handleShowNavi: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleShowNavi: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Navi = ({ handleShowNavi }: Navi): JSX.Element => {
@@ -110,17 +110,17 @@ const Navi = ({ handleShowNavi }: Navi): JSX.Element => {
   // 	: [];
 
   const sitePages = [
-    { title: "Home", slug: "/" },
-    { title: "Contact", slug: "/contact" },
-  ];
+    { title: 'Home', slug: '/' },
+    { title: 'Contact', slug: '/contact' },
+  ]
 
   return (
     <div
-      className={`w-screen flex items-start justify-center p-5 bg-blueRgba fixed top-0 left-0 right-0 bototm-0 z-3 text-white text-4xl overflow-hidden inset-0 animate-fadeIn`}
+      className={`w-screen flex items-start justify-center p-5 bg-blueRgba fixed top-0 left-0 right-0 bototm-0 z-3 text-white text-4xl overflow-hidden inset-0 animate-fadeIn z-10`}
     >
       <ul className={`max-w-2xl w-full p-5 relative m-0 pt-7 overflow-y-auto`}>
         <div
-          className={`top-0 left-0 w-9 cursor-pointer absolute before:block before:h-1 before:w-full before:bg-white after:block after:h-1 after:w-full after:bg-white ${styles["styled-x"]}`}
+          className={`top-0 left-0 w-9 cursor-pointer absolute before:block before:h-1 before:w-full before:bg-white after:block after:h-1 after:w-full after:bg-white ${styles['styled-x']}`}
           onClick={() => handleShowNavi(false)}
         />
         {sitePages.map((page) => {
@@ -130,11 +130,11 @@ const Navi = ({ handleShowNavi }: Navi): JSX.Element => {
                 {page.title}
               </a>
             </li>
-          );
+          )
         })}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

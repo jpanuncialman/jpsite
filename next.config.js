@@ -5,6 +5,14 @@ const nextConfig = {
     "@mui/x-date-pickers",
     "@devexpress/dx-react-grid-material-ui",
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

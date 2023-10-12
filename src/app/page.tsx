@@ -1,15 +1,17 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from './components/Header'
-import { getPosts } from '../../sanity/sanityutil'
+import { getHomePage, getPosts } from '../../sanity/sanityutil'
+import ProjectList from './components/ProjectList'
 
 interface Project {
-  title: string;
-  description: string;
+  title: string
+  description: string
   // mainImage: ;
 }
 
 export default async function Home() {
+  const homePageData = await getHomePage()
   const projects = await getPosts()
 
   return (
@@ -17,20 +19,10 @@ export default async function Home() {
       <Header />
 
       <div className={`${styles['header-container']}`}>
-        <h1 className={styles['header']}>
-          Joe Panuncialman is a dev in Brooklyn, NY watching lots of cooking
-          vids.
-        </h1>
+        <h1 className={styles['header']}>{homePageData.header}</h1>
       </div>
 
-      <div>
-        {projects.map((project: any) => (
-          <div>
-          <div key={project._id}>{project.title}</div>
-          <p>{project.description}</p>
-          </div>
-        ))}
-      </div>
+      <ProjectList projects={projects} />
     </main>
   )
 }

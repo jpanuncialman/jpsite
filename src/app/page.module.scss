@@ -10,8 +10,9 @@
   }
 }
 
+/*** HOME PAGE ***/
 .header-container {
-  @apply /*grid grid-cols-1 lg:grid-cols-2*/ pt-10;
+  @apply /*grid grid-cols-1 lg:grid-cols-2 pt-10*/ flex items-center h-screen75;
 }
 
 .header {
