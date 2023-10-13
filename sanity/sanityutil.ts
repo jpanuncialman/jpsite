@@ -11,6 +11,18 @@ export async function getHomePage() {
   return await client.fetch(query);
 }
 
+export async function getContactPage() {
+  const query = `
+  *[_type == 'contactPage'][0] {
+    header,
+    body
+  }
+
+  `;
+
+  return await client.fetch(query);
+}
+
 export async function getProjects() {
   const query = `*[_type == 'post'] {
     title,

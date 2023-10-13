@@ -9,7 +9,7 @@ const Project = ({ project }: { project: any }) => {
   return (
     <li key={project._id}>
       <Link className="group" href={`/projects/${project.slug.current}`}>
-        <div className="relative h-60 group-hover:blur-sm">
+        <div className="relative h-80 group-hover:blur-sm">
           <Image
             alt={project.title}
             src={project.mainImage?.asset?.url}

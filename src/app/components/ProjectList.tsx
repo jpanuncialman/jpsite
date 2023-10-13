@@ -18,7 +18,7 @@ const ProjectList = ({ projects }: { projects: any[] }) => {
         {projects.map((project) => {
           if (
             selectedFilter === '' ||
-            project.categories.some((c) => c.title === selectedFilter)
+            project.categories.some((c: any) => c.title === selectedFilter)
           )
             return <Project project={project} key={project._id} />
         })}

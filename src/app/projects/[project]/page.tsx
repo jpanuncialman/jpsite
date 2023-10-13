@@ -5,7 +5,7 @@ import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Project = async ({ params }) => {
+const Project = async ({ params }: { params: any }) => {
   const slug = params.project
 
   const project = await getProject(slug)

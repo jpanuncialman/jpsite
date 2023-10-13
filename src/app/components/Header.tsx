@@ -6,7 +6,7 @@ import { playfair_display, inter } from '../../fonts'
 // import Navi from '../Navi/Navi';
 
 const Header = (): JSX.Element => {
-  const [showNavi, setShowNavi] = useState(false)
+  const [showNavi, setShowNavi] = useState<boolean>(false)
   const handleShowNavi = (show: boolean) => {
     setShowNavi(show)
   }
@@ -51,7 +51,7 @@ const NaviHamburger = ({
     return classToReturn
   }
 
-  const getDelayClass = (d) => {
+  const getDelayClass = (d: number) => {
     let toReturn = ''
     switch (d) {
       case 1:
@@ -71,7 +71,7 @@ const NaviHamburger = ({
 
     return renderArr.map((i) => (
       <div
-        className={`w-full h-1 absolute bg-standard h-1 ${getPositionClass(
+        className={`w-full absolute bg-standard h-1 ${getPositionClass(
           i
         )} transition-hamburger ${getDelayClass(i)} ${
           naviIsShown ? 'opacity-0' : 'opacity-100'
@@ -100,28 +100,6 @@ interface Navi {
 }
 
 const Navi = ({ handleShowNavi }: Navi): JSX.Element => {
-  // const data = useStaticQuery(graphql`
-  // 	query NaviQuery {
-  // 		allSanitySitePage: allSanitySitePage {
-  // 			edges {
-  // 				node {
-  // 					slug {
-  // 						current
-  // 					}
-  // 					title
-  // 				}
-  // 			}
-  // 		}
-  // 	}
-  // `);
-
-  // Render Site Pages Array
-  // let sitePages = data
-  // 	? data.allSanitySitePage.edges.map(edge => {
-  // 			return { title: edge.node.title, slug: `/${edge.node.slug.current}` };
-  // 	  })
-  // 	: [];
-
   const sitePages = [
     { title: 'Home', slug: '/' },
     { title: 'Contact', slug: '/contact' },
