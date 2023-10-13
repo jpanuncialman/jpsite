@@ -37,6 +37,7 @@ module.exports = {
       },
       height: {
         screen75: "75vh",
+        closeBtn: "36px",
       },
     },
     colors: {

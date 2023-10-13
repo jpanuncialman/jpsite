@@ -1,7 +1,8 @@
 'use client' // This is a client component 👈🏽
 import React, { useState } from 'react'
 import styles from '../page.module.scss'
-
+import Link from 'next/link'
+import { playfair_display, inter } from '../../fonts'
 // import Navi from '../Navi/Navi';
 
 const Header = (): JSX.Element => {
@@ -10,10 +11,18 @@ const Header = (): JSX.Element => {
     setShowNavi(show)
   }
   return (
-    <div className={`relative cursor-pointer h-9 w-12 mt-4`}>
-      <NaviHamburger showNavi={showNavi} handleShowNavi={handleShowNavi} />
-      {showNavi && <Navi handleShowNavi={handleShowNavi} />}
-    </div>
+    <header id="hamburger-container" className="w-full flex justify-between">
+      <div
+        id="logo"
+        className={`${styles['header']} ${playfair_display.className}`}
+      >
+        <Link href={'/'}>JP</Link>
+      </div>
+      <div className={`relative cursor-pointer h-9 w-14`}>
+        <NaviHamburger showNavi={showNavi} handleShowNavi={handleShowNavi} />
+        {showNavi && <Navi handleShowNavi={handleShowNavi} />}
+      </div>
+    </header>
   )
 }
 
@@ -72,13 +81,17 @@ const NaviHamburger = ({
       />
     ))
   }
+
+  const handleHamburgerClick = () => {
+    handleShowNavi(!showNavi)
+  }
   return (
-    <div
-      className={`max-w-2xl cursor-pointer h-9 w-14 relative mt-5`}
-      onClick={() => handleShowNavi(!showNavi)}
+    <button
+      className={`max-w-2xl cursor-pointer h-9 w-14 relative mt-5 z-`}
+      onClick={handleHamburgerClick}
     >
       {renderHamburgerBlockLinks(showNavi)}
-    </div>
+    </button>
   )
 }
 
@@ -114,26 +127,40 @@ const Navi = ({ handleShowNavi }: Navi): JSX.Element => {
     { title: 'Contact', slug: '/contact' },
   ]
 
+  const handleCloseClick = () => {
+    handleShowNavi(false)
+  }
+
   return (
-    <div
-      className={`w-screen flex items-start justify-center p-5 bg-blueRgba fixed top-0 left-0 right-0 bototm-0 z-3 text-white text-4xl overflow-hidden inset-0 animate-fadeIn z-10`}
+    <nav
+      className={`w-screen flex items-start justify-center p-5 bg-blueRgba fixed top-0 left-0 right-0 bototm-0 z-3 text-white text-4xl overflow-hidden inset-0 animate-fadeIn z-10 ${inter.className}`}
     >
-      <ul className={`max-w-2xl w-full p-5 relative m-0 pt-7 overflow-y-auto`}>
+      <ul
+        className={`max-w-2xl w-full py-5 relative m-0 pt-7 overflow-y-auto overflow-x-hidden`}
+      >
         <div
-          className={`top-0 left-0 w-9 cursor-pointer absolute before:block before:h-1 before:w-full before:bg-white after:block after:h-1 after:w-full after:bg-white ${styles['styled-x']}`}
-          onClick={() => handleShowNavi(false)}
-        />
+          id="x-container"
+          className="flex absolute w-full justify-end top-0 h-closeBtn"
+        >
+          <button
+            className={`top-0 left-0 w-9 cursor-pointer /*absolute*/ before:block before:h-1 before:w-full before:bg-white after:block after:h-1 after:w-full after:bg-white ${styles['styled-x']} relative`}
+            onClick={handleCloseClick}
+          />
+        </div>
         {sitePages.map((page) => {
           return (
-            <li key={page.slug} className="mb-0">
-              <a className="text-white text-7xl uppercase" href={page.slug}>
+            <li key={page.slug} className="my-8">
+              <a
+                className="text-white text-5xl lg:text-7xl uppercase font-semibold"
+                href={page.slug}
+              >
                 {page.title}
               </a>
             </li>
           )
         })}
       </ul>
-    </div>
+    </nav>
   )
 }
 

@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 
+import { space_mono } from '@/src/fonts'
+
 const ProjectFilter = ({
   projects,
   selectedFilter,
@@ -51,7 +53,7 @@ const ProjectFilter = ({
     setDropdownOpen(false)
   }
   return (
-    <>
+    <div className={`${space_mono.className}`}>
       {/*** MOBILE */}
       <div className="block lg:hidden mb-10">
         <button
@@ -84,16 +86,16 @@ const ProjectFilter = ({
           ref={menuRef}
           className={`z-10 ${
             dropdownOpen ? 'block' : 'hidden'
-          } divide-y divide-gray-100 rounded overflow-hidden shadow w-44 transition-filterIn w-full mt-6`}
+          } divide-y divide-gray-100 rounded shadow w-44 transition-filterIn w-full mt-6 relative overflow-visible`}
         >
           <ul
-            className="text-sm w-full bg-slate-700 text-white"
+            className="text-sm w-full bg-slate-700 text-white absolute top-0 left-0"
             aria-labelledby="dropdownDefaultB"
           >
             <li>
               <a
                 href="#"
-                className={`cursor-pointer block px-8 py-2 ${
+                className={`cursor-pointer block px-8 py-4 ${
                   selectedFilter === '' ? 'bg-slate-400' : 'bg-slate-700'
                 } hover:bg-blueRgbaHover text-white `}
                 onClick={(e) => handleFilterItemClick(e, '')}
@@ -105,7 +107,7 @@ const ProjectFilter = ({
               <li>
                 <a
                   href="#"
-                  className={`cursor-pointer block px-8 py-2 ${
+                  className={`cursor-pointer block px-8 py-4 ${
                     selectedFilter === c ? 'bg-slate-400' : 'bg-slate-700'
                   } hover:bg-blueRgbaHover text-white `}
                   onClick={(e) => handleFilterItemClick(e, c)}
@@ -119,7 +121,7 @@ const ProjectFilter = ({
       </div>
       {/*** DESKTOP */}
       <div className="hidden lg:block mb-10">
-        <ul className="flex">
+        <ul className="flex text-base">
           {cats.map((c) => (
             <li>
               <button
@@ -134,7 +136,7 @@ const ProjectFilter = ({
           ))}
         </ul>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -11,9 +11,10 @@ export async function getHomePage() {
   return await client.fetch(query);
 }
 
-export async function getPosts() {
+export async function getProjects() {
   const query = `*[_type == 'post'] {
     title,
+    slug,
     description,
     mainImage {
       asset->{
@@ -29,5 +30,27 @@ export async function getPosts() {
 
   const data = await client.fetch(query);
 
+  return data;
+}
+
+export async function getProject(slug: string) {
+  const query = `*[_type == 'post' && slug.current == $slug][0] {
+    title,
+    mainImage {
+      asset->{
+        url
+      }
+    },
+    categories[]->{
+      title
+    },
+    body
+    
+  }
+`;
+
+  const data = await client.fetch(query, { slug });
+
+  console.log("DATA!:", data);
   return data;
 }

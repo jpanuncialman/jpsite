@@ -16,15 +16,17 @@
 }
 
 .header {
-  @apply text-4xl lg:text-7xl font-bold my-7;
+  @apply text-4xl lg:text-7xl font-bold my-4 lg:my-7;
 }
 
 .styled-x {
   &::before {
-    transform: translateY(12px) rotate(45deg);
+    position: absolute;
+    transform: rotate(45deg);
   }
 
   &::after {
-    transform: translateY(8px) rotate(-45deg);
+    position: absolute;
+    transform: rotate(-45deg);
   }
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import Header from './components/Header'
-import { getHomePage, getPosts } from '../../sanity/sanityutil'
+import { getHomePage, getProjects } from '../../sanity/sanityutil'
 import ProjectList from './components/ProjectList'
 
 interface Project {
@@ -12,7 +12,7 @@ interface Project {
 
 export default async function Home() {
   const homePageData = await getHomePage()
-  const projects = await getPosts()
+  const projects = await getProjects()
 
   return (
     <main className={styles.main}>
