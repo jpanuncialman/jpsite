@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,9 +26,14 @@ module.exports = {
       },
       transition: {
         hamburger: "all 0.4s ease-in-out",
+        filterIn: "transform 0.4s ease",
       },
       transitionDelay: {
         400: "0.4s",
+      },
+      transform: {
+        transYDown: "translateY(-20px)",
+        transYZero: "translateY(0)",
       },
       height: {
         screen75: "75vh",
@@ -52,6 +58,7 @@ module.exports = {
       // neutral: colors.trueGray,
       // gray: colors.coolGray,
       // slate: colors.blueGray,
+      ...colors,
     },
 
     transition: {
