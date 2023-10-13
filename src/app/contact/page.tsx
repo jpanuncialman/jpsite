@@ -4,6 +4,14 @@ import Header from '../components/Header'
 import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Contact Me | Joe Panuncialman',
+  description:
+    'Contact me for help with your music, dev, or production project!',
+}
+
 const Contact = async () => {
   const contactPage = await getContactPage()
 
