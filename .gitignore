@@ -39,7 +39,7 @@ next-env.d.ts
 
 .env
 
-/.yarn
-/.vscode
+/.yarn/
+/.vscode/
 /.yarn/cache
 /.yarn/unplugged
