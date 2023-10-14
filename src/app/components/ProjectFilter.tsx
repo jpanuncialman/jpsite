@@ -104,7 +104,7 @@ const ProjectFilter = ({
               </a>
             </li>
             {cats.map((c) => (
-              <li>
+              <li key={c}>
                 <a
                   href="#"
                   className={`cursor-pointer block px-8 py-4 ${
@@ -123,7 +123,7 @@ const ProjectFilter = ({
       <div className="hidden lg:block mb-10">
         <ul className="flex text-base">
           {cats.map((c) => (
-            <li>
+            <li key={c}>
               <button
                 className={`cursor-pointer ${
                   selectedFilter === c ? 'bg-blueRgbaHover' : 'bg-blueRgba'
